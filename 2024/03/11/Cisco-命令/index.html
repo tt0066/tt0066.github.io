@@ -1,0 +1,272 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Cisco 命令 | TSH</title><meta name="author" content="Tang ShunHai"><meta name="copyright" content="Tang ShunHai"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="忘记密码  拔电重插，按mode键 进入交换机初始化flash：flash_init 查看文件：dir flash，找到保存密码的config.text文件 改名：rename flash:config.text flash:config.joinlabs 检查下：dir flash 重启：reset，询问是否要重启：y 询问是否进入初始化配置界面：no 此时可以进入交换机，进入特权模式：enab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cisco 命令">
+<meta property="og:url" content="http://tt0066.github.io/2024/03/11/Cisco-%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="TSH">
+<meta property="og:description" content="忘记密码  拔电重插，按mode键 进入交换机初始化flash：flash_init 查看文件：dir flash，找到保存密码的config.text文件 改名：rename flash:config.text flash:config.joinlabs 检查下：dir flash 重启：reset，询问是否要重启：y 询问是否进入初始化配置界面：no 此时可以进入交换机，进入特权模式：enab">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png">
+<meta property="article:published_time" content="2024-03-11T13:51:56.000Z">
+<meta property="article:modified_time" content="2024-03-18T08:34:26.792Z">
+<meta property="article:author" content="Tang ShunHai">
+<meta property="article:tag" content="命令">
+<meta property="article:tag" content="思科">
+<meta property="article:tag" content="交换机">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png"><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://tt0066.github.io/2024/03/11/Cisco-%E5%91%BD%E4%BB%A4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"距离上次更新已经过去了","messageNext":"天，文章内容或许已经过时。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Tang ShunHai","link":"链接: ","source":"来源: TSH","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Cisco 命令',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-03-18 16:34:26'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png')"><nav id="nav"><span id="blog-info"><a href="/" title="TSH"><span class="site-name">TSH</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Cisco 命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-11T13:51:56.000Z" title="发表于 2024-03-11 21:51:56">2024-03-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-18T08:34:26.792Z" title="更新于 2024-03-18 16:34:26">2024-03-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Cisco 命令"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>忘记密码</p>
+<ol>
+<li>拔电重插，按mode键</li>
+<li>进入交换机初始化flash：flash_init</li>
+<li>查看文件：dir flash，找到保存密码的config.text文件</li>
+<li>改名：rename flash:config.text flash:config.joinlabs</li>
+<li>检查下：dir flash</li>
+<li>重启：reset，询问是否要重启：y</li>
+<li>询问是否进入初始化配置界面：no</li>
+<li>此时可以进入交换机，进入特权模式：enable，然后：copy flash:config.joinlabs running-config</li>
+<li>进入配置模式修改console口密码，特权模式密码</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">configure terminal</span><br><span class="line">username  xxx password yyy</span><br><span class="line">line console <span class="number">0</span></span><br><span class="line">login local</span><br><span class="line">quit</span><br><span class="line">enable secret zzz</span><br><span class="line"><span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
+
+<p>基本配置命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># ip default-gateway   设置网关</span></span><br><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># no ip domain-lookup  关闭DNS查看功能</span></span><br><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># exec-timeout 0 0   阻止会话退出</span></span><br></pre></td></tr></table></figure>
+
+<p>telnet</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># line vty 0 4    进入虚拟终端</span></span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-line</span>)<span class="comment"># password xx   设置登录口令</span></span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-line</span>)<span class="comment"># login      要求口令验证</span></span><br></pre></td></tr></table></figure>
+
+<p>控制台口令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># line console 0   进入控制台口</span></span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-line</span>)<span class="comment"># password xx  </span></span><br></pre></td></tr></table></figure>
+
+<p>思科发现协议</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span><span class="comment"># show cdp    显示全局配置信息</span></span><br><span class="line"><span class="keyword">switch</span><span class="comment"># show cdp interface端口   查看cdp配置下端口信息</span></span><br><span class="line"><span class="keyword">switch</span><span class="comment"># show cdp neighbors   显示直连cisco设备信息（思科与华三、华为互连时识有些别不了）</span></span><br><span class="line"><span class="keyword">switch</span><span class="comment"># show cdp neighbors detail</span></span><br></pre></td></tr></table></figure>
+
+<p>恢复出厂设置</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span><span class="comment"># erase startup-config</span></span><br><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># delete flash:vlan.dat</span></span><br></pre></td></tr></table></figure>
+
+<p>配置接口标识（区分各个接口）</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># interface 接口</span></span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-if</span>)<span class="comment"># description 描述信息</span></span><br></pre></td></tr></table></figure>
+
+<p>vtp配置</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># vtp domain   设置vtp域名</span></span><br><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># vtp password xx   设置vtp密码</span></span><br><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># vtp mode server/client/transparent  设置vtp服务模式</span></span><br><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># vtp version   设置vtp版本</span></span><br><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># vtp pruning    设置vtp修解</span></span><br></pre></td></tr></table></figure>
+
+<p>vlan基本配置</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span><span class="comment">#vlan database    进入vlan配置模式</span></span><br><span class="line"><span class="keyword">switch</span>(vlan)<span class="comment">#vlan 号码 name 名称    创建、命名</span></span><br><span class="line"><span class="keyword">switch</span>(vlan)<span class="comment">#vlan 号码 mtu 数值    修改mtu大小</span></span><br><span class="line"><span class="keyword">switch</span>(vlan)<span class="comment">#exit</span></span><br><span class="line"><span class="keyword">switch</span><span class="comment">#show vlan</span></span><br><span class="line"><span class="keyword">switch</span><span class="comment"># copy running-config startup-config    保存配置</span></span><br></pre></td></tr></table></figure>
+
+<p>vlan中添加端口</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span><span class="comment"># conf t</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">switch</span>(config)<span class="comment">#interface fastethernet0/1        进入要分配的端口</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-if</span>)<span class="comment">#switchport mode access        定义二层端口</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-if</span>)<span class="comment">#switchport access vlan号码    把端口发给一个vlan</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-if</span>)<span class="comment">#switchport mode trunk         设置为干线</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-if</span>)<span class="comment">#switchport trunk encapsulation dotlq     设置vlan中继协议</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-if</span>)<span class="comment">#no switchport mode 或 (switchport mode access)  禁用干线</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-if</span>)<span class="comment">#switchport trunk allowed vlan add 1,2         从trunk中添加vlans</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-if</span>)<span class="comment">#switchport trunk allowed vlan remove1,2       从trunk中删除vlan</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-if</span>)<span class="comment">#switchport trunk pruning vlan remove1,2          </span></span><br></pre></td></tr></table></figure>
+
+<p>设置接口为动态协商模式</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(config)<span class="comment">#interface 接口号</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">switch</span>(config)<span class="comment">#switchport mode dynamic desirable/auto</span></span><br></pre></td></tr></table></figure>
+
+<p>生成树stp</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># spanning-tree vlan    基于vlan启用stp生成树</span></span><br><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># spanning-tree vlan root primary    基于vlan指定交换机</span></span><br><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># spanning-tree root secondary    基于vlan指定备用交换机</span></span><br><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># spanning-tree vlan priority&lt;0-65535&gt;    指定交换机优先级</span></span><br><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># no spanning-tree vlan priority    将交换机优先级回复默认</span></span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-if</span>)<span class="comment"># spanning-tree vlan cost&lt;0-20000000&gt;    指定端口成本，起用trunk的端口模式下</span></span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-if</span>)<span class="comment"># spanning-tree vlan port-priority&lt;0-255&gt;    指定端口优先级</span></span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-if</span>)<span class="comment"># spanning-tree portfast    配置端口（连接终端设备的接口状态）</span></span><br><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># spanning-tree uplinkfast    配置上行速率</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>vlan为可选参数，当没有该参数时将修改所有的vlan网桥的优先级和所有vlan的端口成本</p>
+</blockquote>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span><span class="comment"># show spanning-tree summary    检测vlan生成树配置</span></span><br><span class="line"><span class="keyword">switch</span><span class="comment"># show spanning-tree vlan detail    浏览详细的生成树配置</span></span><br><span class="line"><span class="keyword">switch</span><span class="comment"># show spanning-tree interface detail    浏览详细的生成树端口配置信息</span></span><br></pre></td></tr></table></figure>
+
+<p>以太网通道配置</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(config)<span class="comment"># interface range fastemet0/1-2    将fa0/1和fa0/2捆绑</span></span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-if</span>)<span class="comment"># change-group 1 mode on    配置以太通道模式</span></span><br><span class="line"><span class="keyword">switch</span>(config<span class="literal">-if</span>)<span class="comment"># port-channel load-batance&#123;dst-mac|src-mac&#125; 在链路间实现负载均衡</span></span><br><span class="line"><span class="keyword">switch</span><span class="comment"># show etherchannel 1 summary    查看通道信息</span></span><br><span class="line"><span class="keyword">switch</span><span class="comment"># show etherchannel 1 load-balance    查看通道信息</span></span><br></pre></td></tr></table></figure>
+
+<p>Cisco交换机巡检命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、show interface stats ；查看交换机所有接口当前接口流量</span><br><span class="line"> </span><br><span class="line"><span class="number">2</span>、show running<span class="literal">-config</span> ；查看当前设备配置</span><br><span class="line"> </span><br><span class="line"><span class="number">3</span>、show version ；查看IOS版本信息及设备正常运行时间</span><br><span class="line"> </span><br><span class="line"><span class="number">4</span>、show clock ；查看设备时钟信息</span><br><span class="line"> </span><br><span class="line"><span class="number">5</span>、show vtp status ；查看交换机vtp配置模式</span><br><span class="line"> </span><br><span class="line"><span class="number">6</span>、show vtp password ；查看交换机vtp配置口令</span><br><span class="line"> </span><br><span class="line"><span class="number">7</span>、show env all ；查看设备温度，电源和风扇运转参数及是否报警</span><br><span class="line"> </span><br><span class="line"><span class="number">8</span>、show inventory ；调取设备内部板卡出厂模块型号及序列号</span><br><span class="line"> </span><br><span class="line"><span class="number">9</span>、show spanning<span class="literal">-tree</span> root ；查看交换机生成树根位置</span><br><span class="line"> </span><br><span class="line"><span class="number">10</span>、show cdp neighbors ；查看邻接cisco设备基本信息</span><br><span class="line"> </span><br><span class="line"><span class="number">11</span>、show cdp neighbors detail ；查看邻接cisco设备详细信息</span><br><span class="line"> </span><br><span class="line"><span class="number">12</span>、show interface status ；查看交换机接口状态是否存在errordisable接口disable接口</span><br><span class="line"> </span><br><span class="line"><span class="number">13</span>、show interface summary ；查看交换机所有接口当前接口流量</span><br><span class="line"> </span><br><span class="line"><span class="number">14</span>、show interface | i errors|FastEthernet|GigabitEthernet​​ ；查看接口是否存在大量input或output errors包错误</span><br><span class="line"> </span><br><span class="line"><span class="number">15</span>、show processes cpu ；查看设备cpu负载</span><br><span class="line"> </span><br><span class="line"><span class="number">16</span>、show processes mem ；查看设备mem负载</span><br><span class="line"> </span><br><span class="line"><span class="number">17</span>、show access<span class="literal">-list</span> ；查看访问控制列表配置及匹配数据包数量</span><br><span class="line"> </span><br><span class="line"><span class="number">18</span>、show logging ；查看本机内部日志记录情况</span><br><span class="line"> </span><br><span class="line"><span class="number">19</span>、show ip route ；查看路由表</span><br><span class="line"> </span><br><span class="line"><span class="number">20</span>、show firewall ；检查防火墙的工作模式</span><br><span class="line"> </span><br><span class="line"><span class="number">21</span>、show conn count ；检查防火墙并发数</span><br><span class="line"> </span><br><span class="line"><span class="number">22</span>、show xlate count ；检查防火墙nat工作状态</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://tt0066.github.io">Tang ShunHai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://tt0066.github.io/2024/03/11/Cisco-%E5%91%BD%E4%BB%A4/">http://tt0066.github.io/2024/03/11/Cisco-%E5%91%BD%E4%BB%A4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://tt0066.github.io" target="_blank">TSH</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%91%BD%E4%BB%A4/">命令</a><a class="post-meta__tags" href="/tags/%E6%80%9D%E7%A7%91/">思科</a><a class="post-meta__tags" href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a></div><div class="post_share"><div class="social-share" data-image="https://jsd.012700.xyz/gh/jerryc127/CDN@latest/cover/default_bg.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/13/huawei-rpa/" title="huawei-rpa"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">huawei-rpa</div></div></a></div><div class="next-post pull-right"><a href="/2024/03/11/hello-world/" title="Hello World"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/02/22/%E5%8D%8E%E4%B8%BA%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/" title="华为交换机基本配置"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-22</div><div class="title">华为交换机基本配置</div></div></a></div><div><a href="/2024/03/18/OSPF%E4%B8%93%E9%A2%98/" title="OSPF专题"><img class="cover" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-18</div><div class="title">OSPF专题</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Tang ShunHai</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/tt0066"><i class="fab fa-github"></i><span></span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">没啥公告，等做大做强再说</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/03/18/%E6%8A%80%E8%83%BD/" title="技能"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="技能"/></a><div class="content"><a class="title" href="/2024/03/18/%E6%8A%80%E8%83%BD/" title="技能">技能</a><time datetime="2024-03-18T08:09:31.000Z" title="发表于 2024-03-18 16:09:31">2024-03-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/18/OSPF%E4%B8%93%E9%A2%98/" title="OSPF专题"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OSPF专题"/></a><div class="content"><a class="title" href="/2024/03/18/OSPF%E4%B8%93%E9%A2%98/" title="OSPF专题">OSPF专题</a><time datetime="2024-03-18T01:47:15.000Z" title="发表于 2024-03-18 09:47:15">2024-03-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/16/wx-miniprogram%E8%AF%BB%E5%8F%96excel/" title="微信小程序读取excel并上传到云数据库"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微信小程序读取excel并上传到云数据库"/></a><div class="content"><a class="title" href="/2024/03/16/wx-miniprogram%E8%AF%BB%E5%8F%96excel/" title="微信小程序读取excel并上传到云数据库">微信小程序读取excel并上传到云数据库</a><time datetime="2024-03-16T14:36:05.000Z" title="发表于 2024-03-16 22:36:05">2024-03-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/14/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" title="内网渗透"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="内网渗透"/></a><div class="content"><a class="title" href="/2024/03/14/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" title="内网渗透">内网渗透</a><time datetime="2024-03-14T05:45:01.000Z" title="发表于 2024-03-14 13:45:01">2024-03-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/13/huawei-rpa/" title="huawei-rpa"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="huawei-rpa"/></a><div class="content"><a class="title" href="/2024/03/13/huawei-rpa/" title="huawei-rpa">huawei-rpa</a><time datetime="2024-03-13T02:55:50.000Z" title="发表于 2024-03-13 10:55:50">2024-03-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Tang ShunHai</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Welconme to my blog</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
